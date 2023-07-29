@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const categories = ['CPU / Processor', 'Motherboard', 'RAM', 'Power Supply Unit', 'Storage Device', 'Monitor'];
+const categories = ['CPU', 'GPU' ,'Motherboard', 'RAM', 'Power Supply Unit', 'Storage Device', 'Monitor'];
 
 const PCBuilderIndexPage: React.FC = () => {
   return (

@@ -6,7 +6,7 @@ import Link from 'next/link';
 interface Product {
   _id: number;
   image: string;
-  name: string;
+  productName: string;
   category: string;
   price: number;
   inStock: boolean;
@@ -20,7 +20,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <Card
-      cover={<img src={product.image} alt={product.name} />}
+      cover={<img src={product.image} alt={product.productName} />}
       actions={[
         <Link href={`/product/${product._id}`} passHref>
           <Button type="primary">View Details</Button>
@@ -28,7 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       ]}
     >
       <Card.Meta
-        title={product.name}
+        title={product.productName}
         description={
           <>
             <p>Category: {product.category}</p>

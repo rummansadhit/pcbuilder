@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 interface Product {
   _id: number;
   image: string;
-  name: string;
+  productName: string;
   category: string;
   price: number;
   inStock: boolean;
