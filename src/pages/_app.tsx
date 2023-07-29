@@ -5,11 +5,14 @@ import theme from './themeConfig';
 import Layout from '../components/Layout';
 import '../styles/slick.css';
 import { Provider } from 'react-redux';
-import store from '@/utils/store';
+import store, { persistor } from '@/utils/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const App = ({ Component, pageProps }: AppProps) => (
 
   <Provider store={store}>
+<PersistGate loading={null} persistor={persistor}>
+
 
 <ConfigProvider theme={theme}>
     {/* Wrap the Component with the Layout */}
@@ -17,6 +20,9 @@ const App = ({ Component, pageProps }: AppProps) => (
       <Component {...pageProps} />
     </Layout>
   </ConfigProvider>
+
+</PersistGate>
+
 
 
 

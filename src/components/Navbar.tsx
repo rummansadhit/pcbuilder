@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
       setIsDrawerVisible(false);
     };
 
-  
+    const isCompleteButtonDisabled = pcBuilderComponents.length < 5;
 
   return (
     <div>
@@ -42,6 +42,8 @@ const Navbar: React.FC = () => {
             <PCBuilderCart key={component._id} component={component} />
           ))}
         </div>
+
+           {pcBuilderComponents.length > 0 && <Button disabled={isCompleteButtonDisabled} type="primary">Complete</Button>}
         </Drawer>
         </Menu.Item>
       </Menu>

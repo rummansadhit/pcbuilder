@@ -1,15 +1,19 @@
 import React from 'react';
 import { Button, Card } from 'antd';
+import { useDispatch } from 'react-redux';
+import { removeFromPCBuilder } from  '@/utils/slices/pcBuilderSlice'; // Import the action
 import { PCComponent } from '@/utils/api/pcBuilderApi';
 
 interface PCBuilderCartProps {
-  component: PCComponent; 
+  component: PCComponent;
 }
 
 const PCBuilderCart: React.FC<PCBuilderCartProps> = ({ component }) => {
-  const handleAddToPCBuilder = () => {
-    // Implement the logic to add the component to the PC builder state
-    console.log('Adding component to PC builder:', component);
+  const dispatch = useDispatch();
+
+  const handleRemoveFromPCBuilder = () => {
+    // Dispatch the action to remove the component from the cart
+    dispatch(removeFromPCBuilder(component._id));
   };
 
   return (
@@ -20,8 +24,7 @@ const PCBuilderCart: React.FC<PCBuilderCartProps> = ({ component }) => {
         <p>Price: {component.price}</p>
       </div>
       <div>
-        <Button type="primary" danger onClick={handleAddToPCBuilder}>Remove</Button>
-       
+        <Button type="primary" danger onClick={handleRemoveFromPCBuilder}>Remove</Button>
       </div>
     </Card>
   );

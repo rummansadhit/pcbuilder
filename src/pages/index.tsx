@@ -10,6 +10,7 @@ import { Col, Row } from 'antd';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Category from '@/components/Category';
 
 
 interface Product {
@@ -48,11 +49,37 @@ const Home: React.FC<HomeProps> = ({ data }) => {
     slidesPerRow: 3,
     
   };
-
+  const catsliderSettings = {
+    arrow: true,
+    dots: false,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    
+    
+    pauseOnFocus: true,
+    slidesPerRow: 3,
+    
+  };
 
   return (
     <div>
-      
+      <h1> Features Categories </h1>
+
+      <div>
+
+
+        <Slider {...catsliderSettings}>
+
+          {uniqueCategories.map((category) => (
+
+            <Category categoryName={category}/>
+          ))}
+        </Slider>
+      </div>
+
+
+
       <h1>Featured Products</h1>
       {uniqueCategories.map((category) => (
         <div key={category}>
