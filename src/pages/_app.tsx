@@ -1,6 +1,17 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import React from 'react';
+import { ConfigProvider } from 'antd';
+import type { AppProps } from 'next/app';
+import theme from './themeConfig';
+import Layout from '../components/Layout';
+import '../styles/slick.css';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+const App = ({ Component, pageProps }: AppProps) => (
+  <ConfigProvider theme={theme}>
+    {/* Wrap the Component with the Layout */}
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  </ConfigProvider>
+);
+
+export default App;

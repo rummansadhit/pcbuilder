@@ -1,12 +1,13 @@
 // utils/dbConnect.js
-import { MongoClient } from 'mongodb';
+import { Db, MongoClient } from 'mongodb';
 
-const uri = 'mongodb+srv://admin:admin@cluster0.hoygmeu.mongodb.net/'; // Replace this with your MongoDB connection URI
+const uri = process.env.MONGO || "";
+
 const client = new MongoClient(uri);
 
-export async function connectToDatabase() {
-  if (!client.isConnected()) {
+export async function connectToDatabase(dbName?: string): Promise<Db> {
+  
     await client.connect();
-  }
-  return client.db();
+  
+  return client.db(dbName);                                                   
 }
