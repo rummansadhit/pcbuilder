@@ -19,6 +19,7 @@ export const fetchPCComponents = createAsyncThunk('pcBuilder/fetchPCComponents',
   // and retrieve the PC components data
   const response = await fetch('http://localhost:3000/api/builder'); // Replace with your API endpoint
   const data = await response.json();
+  console.log(data);
   return data;
 });
 
@@ -46,6 +47,7 @@ const pcBuilderSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchPCComponents.fulfilled, (state, action) => {
       state.components = action.payload;
+      console.log(action.payload);
       // Extract unique categories from the fetched data
       state.uniqueCategories = action.payload.reduce((categories: string[], product:PCComponent) => {
         if (!categories.includes(product.category)) {

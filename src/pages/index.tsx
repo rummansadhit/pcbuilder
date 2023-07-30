@@ -12,6 +12,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Category from '@/components/Category';
 import { PCComponent } from '@/utils/types/PCComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPCComponents, selectUniqueCategories } from '@/utils/slices/pcBuilderSlice';
 
 
 
@@ -21,14 +23,9 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ data }) => {
+  const dispatch = useDispatch<any>();
 
-
-  const uniqueCategories = data.reduce((categories: string[], product) => {
-    if (!categories.includes(product.category)) {
-      return [...categories, product.category];
-    }
-    return categories;
-  }, []);
+  const uniqueCategories: string[] = useSelector(selectUniqueCategories);
 
   const sliderSettings = {
     arrow: true,
@@ -54,6 +51,13 @@ const Home: React.FC<HomeProps> = ({ data }) => {
     slidesPerRow: 3,
     
   };
+
+  useEffect(() => {
+    // Dispatch the fetchProducts action when the component mounts
+    dispatch(fetchPCComponents());
+  }, [dispatch]);
+
+
 
   return (
     <div>
@@ -85,7 +89,8 @@ const Home: React.FC<HomeProps> = ({ data }) => {
                 </div>
               ))}
           </Slider>
-          </div>
+          
+      </div>
         
   
 
