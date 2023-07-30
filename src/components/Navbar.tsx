@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Badge, Button, Drawer, Menu } from 'antd';
+import { Badge, Button, Drawer, Dropdown, Menu } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearPCBuilder, selectPCBuilderComponents } from '@/utils/slices/pcBuilderSlice';
+import { clearPCBuilder, fetchPCComponents, selectPCBuilderComponents, selectUniqueCategories } from '@/utils/slices/pcBuilderSlice';
 import PCBuilderCart from './PCBuilderCart';
 import { message } from 'antd';
 
@@ -11,12 +11,14 @@ const Navbar: React.FC = () => {
     const [cartItemCount, setCartItemCount] = useState(0);
     const [isDrawerVisible, setIsDrawerVisible] = useState(false);
     const pcBuilderComponents = useSelector(selectPCBuilderComponents);
-    
+    const dispatch = useDispatch<any>();
     useEffect(() => {
         setCartItemCount(pcBuilderComponents.length);
       }, [pcBuilderComponents]);
 
-    const dispatch = useDispatch<any>();
+
+
+    
     const handleCartButtonClick = () => {
       setIsDrawerVisible(true);
     };
@@ -36,6 +38,7 @@ const Navbar: React.FC = () => {
     }
     const isCompleteButtonDisabled = pcBuilderComponents.length < 5;
 
+
   return (
     <div>
    
@@ -47,6 +50,9 @@ const Navbar: React.FC = () => {
         <Menu.Item key="about">
           <Link href="/pc-builder">PC-Builder</Link>
         </Menu.Item>
+
+
+
         <Menu.Item key="pc-builder-cart">
 
         <Badge count={cartItemCount} >
