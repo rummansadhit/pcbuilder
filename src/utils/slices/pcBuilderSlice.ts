@@ -17,7 +17,7 @@ export const fetchPCComponents = createAsyncThunk('pcBuilder/fetchPCComponents',
   // Implement the logic to fetch data from the database here
   // For example, you can use axios to make an HTTP request to your backend API
   // and retrieve the PC components data
-  const response = await fetch('http://localhost:3000/api/builder'); // Replace with your API endpoint
+  const response = await fetch('https://pcbuilder-rummansadhit.vercel.app/api/builder'); // Replace with your API endpoint
   const data = await response.json();
   console.log(data);
   return data;

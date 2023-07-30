@@ -30,11 +30,11 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryComponents }) => {
   );
 };
 
-export default CategoryPage;
+
 
 export const getServerSideProps: GetServerSideProps<CategoryPageProps> = async (context) => {
   const { category } = context.params as { category: string };
-  const response = await fetch('http://localhost:3000/api/builder');
+  const response = await fetch('https://pcbuilder-rummansadhit.vercel.app/api/builder');
   const data = await response.json();
 
   const categoryComponents = data?.filter((component:any) => component.category === category) || [];
@@ -46,3 +46,4 @@ export const getServerSideProps: GetServerSideProps<CategoryPageProps> = async (
   };
 };
 
+export default  CategoryPage;

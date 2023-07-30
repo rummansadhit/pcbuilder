@@ -1,5 +1,5 @@
 // pages/index.tsx
-import { GetStaticProps } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ProductCard from '../components/ProductCard';
@@ -14,6 +14,8 @@ import Category from '@/components/Category';
 import { PCComponent } from '@/utils/types/PCComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPCComponents, selectUniqueCategories } from '@/utils/slices/pcBuilderSlice';
+import { get } from 'http';
+import { connectToDatabase } from '@/utils/dbConnect';
 
 
 
@@ -21,8 +23,24 @@ import { fetchPCComponents, selectUniqueCategories } from '@/utils/slices/pcBuil
 interface HomeProps {
   data: PCComponent[];
 }
+export const getStaticProps: GetStaticProps<HomeProps>= async () => {
+  // Fetch data from the API
 
-const Home: React.FC<HomeProps> = ({ data }) => {
+
+  const db = await connectToDatabase('pc_components');
+  const productsCollection = db.collection('components');
+  const data = await productsCollection.find({  }).toArray();
+
+  return {
+    props: {
+      data: JSON.parse(JSON.stringify(data)),
+      fallback: false,
+    },
+  };
+};
+
+
+export default function Home ({ data }: InferGetStaticPropsType<typeof getStaticProps> ){
   const dispatch = useDispatch<any>();
 
   const uniqueCategories: string[] = useSelector(selectUniqueCategories);
@@ -68,9 +86,9 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 
         <Slider {...catsliderSettings}>
 
-          {uniqueCategories.map((category) => (
+          {uniqueCategories.map((category, index) => (
 
-            <div> <Category key={category} categoryName={category}/>   </div>
+            <div key={index}> <Category key={index} categoryName={category}/>   </div>
           ))}
         </Slider>
       
@@ -97,18 +115,5 @@ const Home: React.FC<HomeProps> = ({ data }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps= async () => {
-  // Fetch data from the API
 
-
-  const response = await fetch('http://localhost:3000/api/builder');
-  const data = await response.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
-};
-export default Home;
 
