@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearPCBuilder, fetchPCComponents, selectPCBuilderComponents, selectUniqueCategories } from '@/utils/slices/pcBuilderSlice';
 import PCBuilderCart from './PCBuilderCart';
 import { message } from 'antd';
-
+import { Divider, Typography } from 'antd';
 const Navbar: React.FC = () => {
 
     const [cartItemCount, setCartItemCount] = useState(0);
@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
       }, [pcBuilderComponents]);
 
 
-
+      const { Title, Paragraph, Text, Link } = Typography;
     
     const handleCartButtonClick = () => {
       setIsDrawerVisible(true);
@@ -44,6 +44,17 @@ const Navbar: React.FC = () => {
    
 
         <Menu theme="dark" mode="horizontal">
+
+        <Menu.Item key="logo">
+          <Link href="/">
+            <Text strong style={{ color: 'white' }}>
+                PC Builder
+            </Text>
+          </Link>
+        </Menu.Item>
+
+
+
         <Menu.Item key="home">
           <Link href="/">Home</Link>
         </Menu.Item>
