@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { PCComponent } from '../types/PCComponent';
 
@@ -12,6 +12,20 @@ const initialState: PCBuilderState = {
   components: [],
   uniqueCategories: [],
 };
+
+export const fetchPCComponents = createAsyncThunk('pcBuilder/fetchPCComponents', async () => {
+  // Implement the logic to fetch data from the database here
+  // For example, you can use axios to make an HTTP request to your backend API
+  // and retrieve the PC components data
+  const response = await fetch('http://localhost:3000/api/builder'); // Replace with your API endpoint
+  const data = await response.json();
+  return data;
+});
+
+
+
+
+
 
 const pcBuilderSlice = createSlice({
   name: 'pcBuilder',
