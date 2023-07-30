@@ -60,7 +60,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 
 
   return (
-    <div>
+    <div style={{ margin: '10rem' }}>
       <h1> Features Categories </h1>
 
       
@@ -89,7 +89,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
                 </div>
               ))}
           </Slider>
-          
+
       </div>
         
   

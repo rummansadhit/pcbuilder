@@ -30,11 +30,11 @@ const Navbar: React.FC = () => {
           <Link href="/">Home</Link>
         </Menu.Item>
         <Menu.Item key="about">
-          <Link href="/about">About</Link>
+          <Link href="/pc-builder">PC-Builder</Link>
         </Menu.Item>
-        <Menu.Item key="pc-builder">
+        <Menu.Item key="pc-builder-cart">
         <Button type="primary" onClick={handleCartButtonClick}>
-            Open
+            My PC
         </Button>
         <Drawer title="Your PC" placement="right" onClose={handleDrawerClose} visible={isDrawerVisible}>
         <div>
