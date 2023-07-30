@@ -2,7 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';
-import { useGetComponentsQuery, PCComponent } from '../../utils/api/pcBuilderApi';
+import {  PCComponent } from '../../utils/types/PCComponent';
 import ProductCard from '@/components/ProductCard';
 import PCBuilderCard from '@/components/PCBuilderCard';
 

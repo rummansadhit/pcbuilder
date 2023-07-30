@@ -55,7 +55,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
     infinite: true,
     autoplay: true,
     speed: 500,
-    
+    rows:1,
     
     pauseOnFocus: true,
     slidesPerRow: 3,
@@ -66,17 +66,17 @@ const Home: React.FC<HomeProps> = ({ data }) => {
     <div>
       <h1> Features Categories </h1>
 
-      <div>
+      
 
 
         <Slider {...catsliderSettings}>
 
           {uniqueCategories.map((category) => (
 
-            <Category categoryName={category}/>
+            <div> <Category categoryName={category}/>   </div>
           ))}
         </Slider>
-      </div>
+      
 
 
 

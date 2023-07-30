@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Card } from 'antd';
 import { useDispatch } from 'react-redux';
 import { removeFromPCBuilder } from  '@/utils/slices/pcBuilderSlice'; // Import the action
-import { PCComponent } from '@/utils/api/pcBuilderApi';
+import { PCComponent } from '@/utils/types/PCComponent';
 
 interface PCBuilderCartProps {
   component: PCComponent;

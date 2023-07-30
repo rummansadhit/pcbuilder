@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Card, Button } from 'antd';
 import { ShoppingCartOutlined, EyeOutlined } from '@ant-design/icons';
-import { PCComponent } from '@/utils/api/pcBuilderApi';
+import { PCComponent } from '@/utils/types/PCComponent';
+
 import { useDispatch } from 'react-redux';
 import { addToPCBuilder } from '@/utils/slices/pcBuilderSlice';
 

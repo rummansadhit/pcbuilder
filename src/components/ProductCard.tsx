@@ -2,19 +2,11 @@
 import { Card, Button } from 'antd';
 import { StarFilled, StarOutlined } from '@ant-design/icons';
 import Link from 'next/link';
+import { PCComponent } from '@/utils/types/PCComponent';
 
-interface Product {
-  _id: number;
-  image: string;
-  productName: string;
-  category: string;
-  price: number;
-  inStock: boolean;
-  rating: number;
-}
 
 interface ProductCardProps {
-  product: Product;
+  product: PCComponent;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {

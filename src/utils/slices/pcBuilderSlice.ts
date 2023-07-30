@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { PCComponent } from '../api/pcBuilderApi';
+import { PCComponent } from '../types/PCComponent';
 
 
 interface PCBuilderState {

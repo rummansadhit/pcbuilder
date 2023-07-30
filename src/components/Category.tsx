@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'antd';
+import { Button, Card } from 'antd';
 
 interface CategoryProps {
   categoryName: string;
@@ -7,16 +7,13 @@ interface CategoryProps {
 
 const Category: React.FC<CategoryProps> = ({ categoryName }) => {
   return (
-    <Card
-      style={{
-        background: 'blue',
-        color: 'white',
-        fontWeight: 'bold',
-        textAlign: 'center',
-      }}
-    >
-      {categoryName}
+    
+    <Card title= {categoryName} extra={<a href="#">More</a>} style={{ width: 300}}>
+
+        <Button>View Details</Button>
     </Card>
+
+  
   );
 };
 
