@@ -16,8 +16,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         {/* Content of the wrapped pages */}
         {children}
       </main>
-      <footer>
+      <footer style={{ textAlign: 'center', padding: '2rem', backgroundColor: '#f0f0f0' }}>
         {/* Footer content */}
+        <p>This is the footer content.</p>
+        <p>&copy; {new Date().getFullYear()} Your Company Name</p>
       </footer>
     </div>
   );
