@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Button, Drawer, Menu } from 'antd';
+import { Badge, Button, Drawer, Menu } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearPCBuilder, selectPCBuilderComponents } from '@/utils/slices/pcBuilderSlice';
 import PCBuilderCart from './PCBuilderCart';
@@ -48,11 +48,18 @@ const Navbar: React.FC = () => {
           <Link href="/pc-builder">PC-Builder</Link>
         </Menu.Item>
         <Menu.Item key="pc-builder-cart">
+
+        <Badge count={cartItemCount} >
+      
         <Button type="primary" onClick={handleCartButtonClick}>
             My PC
 
-            {cartItemCount > 0 && <span style={{ marginLeft: 5 }}>{cartItemCount}</span>}
+        
         </Button>
+
+        </Badge>
+
+
         <Drawer title="Your PC" placement="right" onClose={handleDrawerClose} visible={isDrawerVisible}>
         <div>
           {pcBuilderComponents.map((component) => (

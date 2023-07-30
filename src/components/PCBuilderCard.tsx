@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Card, Button } from 'antd';
+import { Card, Button, message } from 'antd';
 import { ShoppingCartOutlined, EyeOutlined } from '@ant-design/icons';
 import { PCComponent } from '@/utils/types/PCComponent';
-
+import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { addToPCBuilder } from '@/utils/slices/pcBuilderSlice';
 import Link from 'next/link';
@@ -16,6 +16,7 @@ const PCBuilderCard: React.FC<PCBuilderCardProps> = ({product}) => {
 
     const { _id, image, productName, category, price, inStock ,rating } = product;
 
+    const router = useRouter();
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     
@@ -29,6 +30,9 @@ const PCBuilderCard: React.FC<PCBuilderCardProps> = ({product}) => {
         dispatch(addToPCBuilder(product));
     
         setLoading(false);
+        message.success('Component added to PC Builder');
+        router.push('/pc-builder');
+
       };
     
 
