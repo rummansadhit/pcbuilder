@@ -4,6 +4,7 @@ import { Button, Drawer, Menu } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearPCBuilder, selectPCBuilderComponents } from '@/utils/slices/pcBuilderSlice';
 import PCBuilderCart from './PCBuilderCart';
+import { message } from 'antd';
 
 const Navbar: React.FC = () => {
 
@@ -25,6 +26,11 @@ const Navbar: React.FC = () => {
     };
 
     const handleDeleteAll = () => {
+        dispatch(clearPCBuilder());
+    }
+    const handleComplete = () => {
+
+        message.success('PC Build Complete');
         dispatch(clearPCBuilder());
 
     }
@@ -54,7 +60,7 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-           {pcBuilderComponents.length > 0 && <Button disabled={isCompleteButtonDisabled} type="primary">Complete</Button>}
+           {pcBuilderComponents.length > 0 && <Button onClick={handleComplete} disabled={isCompleteButtonDisabled} type="primary">Complete</Button>}
            { pcBuilderComponents.length > 0 && <Button onClick={handleDeleteAll} type='primary' danger>Remove All</Button>}
         </Drawer>
         </Menu.Item>

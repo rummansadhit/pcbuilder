@@ -8,6 +8,9 @@ import { Provider } from 'react-redux';
 import store, { persistor } from '@/utils/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
+
+
+
 const App = ({ Component, pageProps }: AppProps) => (
 
   <Provider store={store}>
@@ -17,6 +20,7 @@ const App = ({ Component, pageProps }: AppProps) => (
 <ConfigProvider theme={theme}>
     {/* Wrap the Component with the Layout */}
     <Layout>
+    
       <Component {...pageProps} />
     </Layout>
   </ConfigProvider>
