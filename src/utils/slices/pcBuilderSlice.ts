@@ -5,10 +5,12 @@ import { PCComponent } from '../types/PCComponent';
 
 interface PCBuilderState {
   components: PCComponent[];
+  uniqueCategories: string[];
 }
 
 const initialState: PCBuilderState = {
   components: [],
+  uniqueCategories: [],
 };
 
 const pcBuilderSlice = createSlice({
@@ -18,7 +20,7 @@ const pcBuilderSlice = createSlice({
     addToPCBuilder(state, action: PayloadAction<PCComponent>) {
       state.components.push(action.payload);
     },
-    removeFromPCBuilder(state, action: PayloadAction<number>) {
+    removeFromPCBuilder(state, action: PayloadAction<string>) {
       state.components = state.components.filter((item) => item._id !== action.payload);
     },
     clearPCBuilder(state) {

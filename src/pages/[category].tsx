@@ -31,10 +31,10 @@ export const getServerSideProps: GetServerSideProps<CategoryProps> = async (cont
   const { category } = context.params;
 
   // Fetch products for the specific category from your database
-  const db = await connectToDatabase();
-  const productsCollection = db.collection('products');
+  const db = await connectToDatabase('pc_components');
+  const productsCollection = db.collection('components');
   const products = await productsCollection.find({ category }).toArray();
-
+   console.log(products);
   return {
     props: {
       products: JSON.parse(JSON.stringify(products)),

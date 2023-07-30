@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card } from 'antd';
+import Link from 'next/link';
 
 interface CategoryProps {
   categoryName: string;
@@ -10,7 +11,13 @@ const Category: React.FC<CategoryProps> = ({ categoryName }) => {
     
     <Card title= {categoryName} extra={<a href="#">More</a>} style={{ width: 300}}>
 
-        <Button>View Details</Button>
+
+          <Link href={`/${encodeURIComponent(categoryName)}`}>
+          <Button>View Details</Button>
+          </Link>
+
+
+      
     </Card>
 
   

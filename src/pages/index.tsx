@@ -11,20 +11,13 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Category from '@/components/Category';
+import { PCComponent } from '@/utils/types/PCComponent';
 
 
-interface Product {
-  _id: number;
-  image: string;
-  productName: string;
-  category: string;
-  price: number;
-  inStock: boolean;
-  rating: number;
-}
+
 
 interface HomeProps {
-  data: Product[];
+  data: PCComponent[];
 }
 
 const Home: React.FC<HomeProps> = ({ data }) => {
@@ -81,23 +74,21 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 
 
       <h1>Featured Products</h1>
-      {uniqueCategories.map((category) => (
-        <div key={category}>
-          <h2>{category}</h2>
+
          
           <Slider {...sliderSettings}>
             {data
-              .filter((product) => product.category === category)
+              .filter((product) => product.averageRating >= 4.5)
               .map((product) => (
                 <div key={product._id}>
                   <ProductCard product={product} />
                 </div>
               ))}
           </Slider>
-          
-        </div>
-      ))}
-    </div>
+          </div>
+        
+  
+
   );
 };
 

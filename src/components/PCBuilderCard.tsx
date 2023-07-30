@@ -22,18 +22,10 @@ const PCBuilderCard: React.FC<PCBuilderCardProps> = ({product}) => {
         setLoading(true);
     
         // Simulate API call or any other async operation here
-        const newComponent: PCComponent = {
-            _id: _id,
-            productName,
-            category,
-            price,
-            image,
-            inStock,
-            rating,
-        };
+
     
         // Dispatch action to add the component to the PC Builder
-        dispatch(addToPCBuilder(newComponent));
+        dispatch(addToPCBuilder(product));
     
         setLoading(false);
       };
