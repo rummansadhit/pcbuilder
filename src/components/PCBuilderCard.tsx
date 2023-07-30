@@ -5,6 +5,7 @@ import { PCComponent } from '@/utils/types/PCComponent';
 
 import { useDispatch } from 'react-redux';
 import { addToPCBuilder } from '@/utils/slices/pcBuilderSlice';
+import Link from 'next/link';
 
 interface PCBuilderCardProps {
 
@@ -65,9 +66,15 @@ const PCBuilderCard: React.FC<PCBuilderCardProps> = ({product}) => {
         >
           Add To Builder
         </Button>
+
+
+        <Link href={`/details/${product._id}`} passHref>
         <Button type="primary" icon={<EyeOutlined />} style={{ flex: '1', marginLeft: '8px' }}>
           Detail
         </Button>
+        </Link>
+
+
       </div>
     </div>
   );
