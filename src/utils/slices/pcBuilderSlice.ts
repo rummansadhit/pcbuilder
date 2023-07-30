@@ -41,6 +41,21 @@ const pcBuilderSlice = createSlice({
       state.components = [];
     },
   },
+
+
+  extraReducers: (builder) => {
+    builder.addCase(fetchPCComponents.fulfilled, (state, action) => {
+      state.components = action.payload;
+      // Extract unique categories from the fetched data
+      state.uniqueCategories = action.payload.reduce((categories: string[], product:PCComponent) => {
+        if (!categories.includes(product.category)) {
+          return [...categories, product.category];
+        }
+        return categories;
+      }, []);
+    });
+  },
+
 });
 
 export const { addToPCBuilder, removeFromPCBuilder, clearPCBuilder } = pcBuilderSlice.actions;
@@ -49,3 +64,4 @@ export default pcBuilderSlice.reducer;
 
 export const selectPCBuilderComponents = (state: RootState) => state.pcBuilder.components;
 
+export const selectUniqueCategories = (state: RootState) => state.pcBuilder.uniqueCategories;
