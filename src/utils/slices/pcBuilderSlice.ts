@@ -46,8 +46,7 @@ const pcBuilderSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(fetchPCComponents.fulfilled, (state, action) => {
-      state.components = action.payload;
-      console.log(action.payload);
+
       // Extract unique categories from the fetched data
       state.uniqueCategories = action.payload.reduce((categories: string[], product:PCComponent) => {
         if (!categories.includes(product.category)) {

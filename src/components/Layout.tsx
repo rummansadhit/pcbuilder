@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <header>
         <Navbar />
       </header>
-      <main>
+      <main style={{ margin: '10rem' }}>
         {/* Content of the wrapped pages */}
         {children}
       </main>

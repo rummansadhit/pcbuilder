@@ -60,7 +60,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 
 
   return (
-    <div style={{ margin: '10rem' }}>
+    <div >
       <h1> Features Categories </h1>
 
       
