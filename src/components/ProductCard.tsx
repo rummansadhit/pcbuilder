@@ -14,9 +14,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <Card
       cover={<img src={product.image} alt={product.productName} />}
       actions={[
-        <Link href={`/details/${product._id}`} passHref>
+        <Link key={product._id} href={`/details/${product._id}`} passHref>
           <Button type="primary">View Details</Button>
-        </Link>,
+        </Link>
       ]}
     >
       <Card.Meta

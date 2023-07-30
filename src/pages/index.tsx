@@ -70,7 +70,7 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 
           {uniqueCategories.map((category) => (
 
-            <div> <Category categoryName={category}/>   </div>
+            <div> <Category key={category} categoryName={category}/>   </div>
           ))}
         </Slider>
       
